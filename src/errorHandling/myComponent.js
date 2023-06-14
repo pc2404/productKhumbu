@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { useErrorBoundary } from 'react-error-boundary';
 import { fetchCardItems } from '../Fetchers/product';
+import ReactGA from 'react-ga';
 
 import CardItem from '../components/CardItem';
 
@@ -10,6 +11,7 @@ const ErrorBoundaryComponent = () => {
   const { showBoundary }=useErrorBoundary();
 
   useEffect(()=>{
+    ReactGA.pageview(window.location.pathname + window.location.search);
     const fetchItems=async()=>{
       try {
         const items=await fetchCardItems();
