@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+"use client";
+import { ErrorBoundary } from "react-error-boundary";
+import ErrorBoundaryComponent from "./errorHandling/myComponent";
+import { ProdunctFetchingError } from "./components/errors/ErroeBoundaryComponent";
+// import ErrorBoundary, { MyClassComponent } from "./errorHandling/myClassComponent";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div>
+
+      <ErrorBoundary 
+        FallbackComponent={ProdunctFetchingError}
+        onError={()=>console.log("Error happended")}
         >
-          Learn React
-        </a>
-      </header>
+        <ErrorBoundaryComponent />
+      </ErrorBoundary>
     </div>
   );
 }
 
 export default App;
+{/* <ErrorBoundary>
+  <MyClassComponent />
+</ErrorBoundary> */}
