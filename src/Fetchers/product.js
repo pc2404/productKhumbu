@@ -8,8 +8,8 @@ export const fetchCardItems=async()=>{
         price:product.price,
         quantity:product.quantity
     }))
-    // console.error("Cannot fetch error. Server is down");
-    // throw new Error("Cannot fetch error. Server is down");
+    console.error("Cannot fetch error. Server is down");
+    throw new Error("Cannot fetch error. Server is down");
 
     return cardItems;
 }
