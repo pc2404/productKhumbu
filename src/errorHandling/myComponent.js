@@ -5,6 +5,7 @@ import { fetchCardItems } from '../Fetchers/product';
 import ReactGA from 'react-ga';
 
 import CardItem from '../components/CardItem';
+import { logError } from '../ga';
 
 const ErrorBoundaryComponent = () => {
   const [cardItems, setCardItems]=useState([]);
@@ -18,6 +19,7 @@ const ErrorBoundaryComponent = () => {
         setCardItems(items)
       } catch (err) {
         showBoundary(err);
+        logError(err)
       }
     }
     fetchItems();
